@@ -1,0 +1,39 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Slides</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-slides>
+    <ion-slide *ngFor="let item of data; let index = index">
+      <img [src]="item.image" />
+      <h2 *ngIf="index == 0">
+        This is a slide examples with random images and slides. Slides are used for the app intro during the first start up.
+      </h2>
+      <h2 *ngIf="index != 0">This is an gallery app.</h2>
+      <p>
+        <b>{{item.description}}</b>
+      </p>
+    </ion-slide>
+
+    <!-- <ion-slide>
+      <img src="./slide-3.png" />
+      <h2>What is Appflow?</h2>
+      <p>
+        <b>Appflow</b> is a powerful set of services and features built on top of Ionic Framework that brings a totally new level of app development agility to mobile dev teams.
+      </p>
+    </ion-slide>
+
+    <ion-slide>
+      <img src="./slide-4.png" />
+      <h2>Ready to Play?</h2>
+      <ion-button fill="clear">Continue
+        <ion-icon slot="end" name="arrow-forward"></ion-icon>
+      </ion-button>
+    </ion-slide> -->
+    </ion-slides>
+</ion-content>

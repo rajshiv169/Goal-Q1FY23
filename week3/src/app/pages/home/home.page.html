@@ -1,0 +1,23 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollY]="false">
+  <cdk-virtual-scroll-viewport class="ion-content-scroll-host" itemSize="56" minBufferPx="900" maxBufferPx="1350">
+    <ion-card *cdkVirtualFor="let item of items">
+      <img [src]="item.image"  />
+      <ion-card-header>
+        <ion-card-subtitle>Image</ion-card-subtitle>
+        <ion-card-title>{{item.name}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        {{item.detail}}
+      </ion-card-content>
+    </ion-card>
+  </cdk-virtual-scroll-viewport>
+</ion-content>
