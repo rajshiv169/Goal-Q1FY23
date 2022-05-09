@@ -1,0 +1,7 @@
+{
+  "name": "week4",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
