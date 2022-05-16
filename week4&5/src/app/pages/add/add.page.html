@@ -1,0 +1,57 @@
+<ion-content [fullscreen]="true">
+    <ion-card>
+        <ion-card-header>
+            <ion-card-subtitle>
+                <p class="ion-text-center">Add a todo task</p>
+            </ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content>
+            <form [formGroup]="todoForm">
+                <ion-item lines="full">
+                    <ion-label position="floating">Title</ion-label>
+                    <ion-input formControlName="title" type="text" required></ion-input>
+                </ion-item>
+                <ion-item lines="full">
+                    <ion-label position="floating">Priority</ion-label>
+                    <ion-select formControlName="priority">
+                        <ion-select-option value="low">Low</ion-select-option>
+                        <ion-select-option value="middle">Middle</ion-select-option>
+                        <ion-select-option value="high">High</ion-select-option>
+                    </ion-select>
+                </ion-item>
+                <ion-item lines="full">
+                    <ion-label position="floating">Due Date</ion-label>
+                    <ion-input formControlName="dueDate" id="open-date-input" readonly></ion-input>
+                    <ion-popover size="cover" trigger="open-date-input" show-backdrop="false">
+                        <ng-template>
+                            <ion-datetime #popoverDatetime presentation="date" (ionChange)="formatDate(popoverDatetime.value)"></ion-datetime>
+                        </ng-template>
+                    </ion-popover>
+                </ion-item>
+                <ion-item lines="full">
+                    <ion-label position="floating">Category</ion-label>
+                    <ion-select formControlName="category">
+                        <ion-select-option value="work">Work</ion-select-option>
+                        <ion-select-option value="personal">Personal</ion-select-option>
+                    </ion-select>
+                </ion-item>
+            </form>
+        </ion-card-content>
+
+        <ion-row>
+            <ion-col>
+                <ion-button expand="full" fill="clear" (click)="cancel()">
+                    Cancel
+                    <ion-ripple-effect></ion-ripple-effect>
+                </ion-button>
+            </ion-col>
+            <ion-col>
+                <ion-button expand="full" fill="clear" (click)="create()">
+                    Create
+                    <ion-ripple-effect></ion-ripple-effect>
+                </ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-card>
+</ion-content>

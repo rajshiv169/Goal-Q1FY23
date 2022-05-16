@@ -1,5 +1,11 @@
 ion-content {
     --background: #F0F4FD;
+    --color: #fff;
+
+    ion-card, ion-item {
+        color: #fff;
+        --background: #34495e;
+    }
 
     p {
         font-size: 16px;

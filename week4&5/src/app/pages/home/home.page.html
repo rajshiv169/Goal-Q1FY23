@@ -1,9 +1,66 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>home</ion-title>
+    <ion-item lines="none">
+      <ion-label style="font-weight: 800; font-size: 3em;">
+        Today
+        <p style="font-weight: 400; color: #433465">
+          {{today | date: 'fullDate'}}
+        </p>
+      </ion-label>
+    </ion-item>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content [fullscreen]="true">
+  
+  <ng-container *ngIf="todoList && todoList.length">
+    <ng-container *ngFor="let item of todoList; let index = index">
+      <ion-card *ngIf="!item.isCompleted && !item.isCancelled" (click)="update(index)">
+        <ion-card-header>
+          <ion-card-subtitle [style.color]="item.priority === 'high' ? 'red' : (item.priority === 'low' ? 'green' : 'orange')">
+            {{item.category}}
+          </ion-card-subtitle>
+          <ion-item>
+            <ion-icon *ngIf="item.priority === 'high'" color="danger" size="small" name="ellipse"></ion-icon>
+            <ion-icon *ngIf="item.priority === 'middle'" color="warning" size="small" name="ellipse"></ion-icon>
+            <ion-icon *ngIf="item.priority === 'low'" color="success" size="small" name="ellipse"></ion-icon>
+            <ion-label class="ion-margin-start">{{item.title}}</ion-label>
+          </ion-item>
+        </ion-card-header>
+    
+        <ion-card-content>
+          <ion-label>
+            Due {{item.dueDate | date: 'fullDate'}}
+          </ion-label>
+        </ion-card-content>
+  
+        <ion-row>
+          <ion-col size="4" class="d-flex ion-justify-content-center">
+            <ion-button fill="clear" class="ion-no-padding ion-no-margin">
+              <ion-icon name="share-outline"></ion-icon>
+              Share
+            </ion-button>
+          </ion-col>
+          <ion-col size="4" class="d-flex ion-justify-content-center">
+            <ion-button fill="clear" class="ion-no-padding ion-no-margin"  (click)="completed(index)">
+              <ion-icon name="checkmark-outline"></ion-icon>
+              Complete
+            </ion-button>
+          </ion-col>
+          <ion-col size="4" class="d-flex ion-justify-content-center">
+            <ion-button fill="clear" class="ion-no-padding ion-no-margin" (click)="cancelled(index)">
+              <ion-icon name="trash-outline"></ion-icon>
+              Cancel
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+    </ng-container>
+  </ng-container>
+  
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="add()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

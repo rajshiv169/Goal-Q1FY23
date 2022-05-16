@@ -1,0 +1,13 @@
+ion-content {
+    --background: #F0F4FD;
+
+    ion-card {
+        position: relative;
+        top: 25%;
+        transform: translateY(-10%);
+    }
+
+    .danger {
+        color: red;
+    }
+}

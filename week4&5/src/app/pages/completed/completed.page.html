@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-item lines="none">
+      <ion-label style="font-weight: 400; font-size: 1.5em; color: #433465">
+        Completed Tasks
+      </ion-label>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  
+  <ng-container *ngIf="todoList && todoList.length">
+    <ion-card *ngFor="let item of todoList; let index = index">
+      <ion-card-header>
+        <ion-card-subtitle [style.color]="item.priority === 'high' ? 'red' : (item.priority === 'low' ? 'green' : 'orange')">
+          {{item.category}}
+        </ion-card-subtitle>
+        <ion-item>
+          <ion-icon *ngIf="item.priority === 'high'" color="danger" size="small" name="ellipse"></ion-icon>
+          <ion-icon *ngIf="item.priority === 'middle'" color="warning" size="small" name="ellipse"></ion-icon>
+          <ion-icon *ngIf="item.priority === 'low'" color="success" size="small" name="ellipse"></ion-icon>
+          <ion-label class="ion-margin-start">{{item.title}}</ion-label>
+        </ion-item>
+      </ion-card-header>
+  
+      <ion-card-content>
+        <ion-label>
+          Due {{item.dueDate | date: 'fullDate'}}
+        </ion-label>
+      </ion-card-content>
+    </ion-card>
+  </ng-container>
+</ion-content>
