@@ -1,0 +1,19 @@
+<div fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="30px">
+  <app-user-list
+    *ngIf="!loading && !error"
+    [users]="users"
+  ></app-user-list>
+  <mat-spinner *ngIf="loading"></mat-spinner>
+  <app-error
+    (reload)="tryAgain()"
+    *ngIf="error && !loading"
+  ></app-error>
+  <button
+    *ngIf="!loading && !error"
+    (click)="addUser()"
+    mat-raised-button
+    color="primary"
+  >
+    Add User
+  </button>
+</div>

@@ -1,0 +1,5 @@
+<div fxLayout="row wrap" fxLayoutAlign="center start" fxLayoutGap="30px">
+  <ng-container *ngFor="let user of users">
+    <app-user-card [user]="user"></app-user-card>
+  </ng-container>
+</div>
